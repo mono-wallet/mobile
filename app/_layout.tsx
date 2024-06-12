@@ -4,17 +4,15 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import React, { useEffect } from 'react';
 import 'react-native-reanimated';
-import { Text } from 'react-native';
 import i18n from '@/i18n';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
-import {I18nextProvider, useTranslation} from 'react-i18next';
+import {I18nextProvider} from 'react-i18next';
+import ReactQuery from '@/context/reactQuery';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const { t } = useTranslation();
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
@@ -33,11 +31,12 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <I18nextProvider i18n={i18n}>
-        <Text>{t("login.title")}</Text>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
+        <ReactQuery>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="+not-found" />
+          </Stack>
+        </ReactQuery>
       </I18nextProvider>
     </ThemeProvider>
   );
