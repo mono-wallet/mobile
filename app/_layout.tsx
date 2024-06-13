@@ -14,7 +14,8 @@ import { I18nextProvider } from "react-i18next";
 import ReactQuery from "@/context/ReactQuery";
 import KeyboardAvoiding from "@/context/KeyboardAvoiding";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { TextInput } from "react-native";
+import { TamaguiProvider } from "tamagui";
+import { tamaguiConfig } from "@/tamagui.config";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -36,18 +37,23 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <I18nextProvider i18n={i18n}>
-        <ReactQuery>
-          <SafeAreaProvider>
-            <KeyboardAvoiding>
-              <Stack>
-                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                <Stack.Screen name="+not-found" />
-              </Stack>
-            </KeyboardAvoiding>
-          </SafeAreaProvider>
-        </ReactQuery>
-      </I18nextProvider>
+      <TamaguiProvider config={tamaguiConfig}>
+        <I18nextProvider i18n={i18n}>
+          <ReactQuery>
+            <SafeAreaProvider>
+              <KeyboardAvoiding>
+                <Stack>
+                  <Stack.Screen
+                    name="(tabs)"
+                    options={{ headerShown: false }}
+                  />
+                  <Stack.Screen name="+not-found" />
+                </Stack>
+              </KeyboardAvoiding>
+            </SafeAreaProvider>
+          </ReactQuery>
+        </I18nextProvider>
+      </TamaguiProvider>
     </ThemeProvider>
   );
 }

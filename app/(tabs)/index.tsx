@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, TextInput } from "react-native";
+import { Image, StyleSheet, Platform } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
@@ -6,6 +6,7 @@ import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { useTranslation } from "react-i18next";
 import React from "react";
+import { Button } from "tamagui";
 
 export default function HomeScreen() {
   const { t } = useTranslation();
@@ -19,6 +20,7 @@ export default function HomeScreen() {
         />
       }
     >
+      <Button theme="blue">Hello world</Button>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">{t("login.title")}Welcome!</ThemedText>
         <HelloWave />
