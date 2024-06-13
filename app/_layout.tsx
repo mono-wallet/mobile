@@ -8,18 +8,21 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
 import "react-native-reanimated";
-import i18n from "@/i18n";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { I18nextProvider } from "react-i18next";
 import ReactQuery from "@/context/ReactQuery";
 import KeyboardAvoiding from "@/context/KeyboardAvoiding";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { TamaguiProvider } from "tamagui";
-import { tamaguiConfig } from "@/tamagui.config";
+import { TamaguiProvider, Theme } from "tamagui";
+import { config } from "@/tamagui.config";
+import { LogBox } from "react-native";
+import i18n from "@/i18n";
+
+LogBox.ignoreLogs([/^Cannot update a component/]);
 
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+const RootLayout = () => {
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
@@ -37,16 +40,13 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <TamaguiProvider config={tamaguiConfig}>
+      <TamaguiProvider config={config} defaultTheme={colorScheme!}>
         <I18nextProvider i18n={i18n}>
           <ReactQuery>
             <SafeAreaProvider>
               <KeyboardAvoiding>
-                <Stack>
-                  <Stack.Screen
-                    name="(tabs)"
-                    options={{ headerShown: false }}
-                  />
+                <Stack screenOptions={{ headerShown: false }}>
+                  <Stack.Screen name="(auth)" />
                   <Stack.Screen name="+not-found" />
                 </Stack>
               </KeyboardAvoiding>
@@ -56,4 +56,6 @@ export default function RootLayout() {
       </TamaguiProvider>
     </ThemeProvider>
   );
-}
+};
+
+export default RootLayout;

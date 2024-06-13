@@ -1,6 +1,9 @@
 node_modules/
 .idea/
 .expo/
+.tamagui/
+.tamag/
+.tama/
 dist/
 npm-debug.*
 *.jks
