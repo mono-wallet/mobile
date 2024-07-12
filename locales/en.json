@@ -1,0 +1,65 @@
+{
+  "login": {
+    "title": "Welcome back",
+    "subtitle": "Login or import your wallet",
+    "importWallet": "Import wallet",
+    "standardLogin": "Email or Phone",
+    "dontHaveAccount": {
+      "title": "Don't have an wallet",
+      "button": "Create new"
+    },
+    "orSignInWith": {
+      "title": "Or sign in with"
+    }
+  },
+  "register": {
+    "title": "Sign up \nor create new wallet",
+    "createSeed": "Create Wallet",
+    "standardRegister": "Create & Secure Wallet",
+    "orSignupWith": {
+      "title": "Or sign up with"
+    },
+    "haveAccount": {
+      "title": "You had an wallet",
+      "button": "Login or import"
+    }
+  },
+  "apple": {
+    "title": "Apple"
+  },
+  "google": {
+    "title": "Google"
+  },
+  "generateSeedPhrase": {
+    "title": "Your wallet has been created",
+    "subtitle": "Securely note your seed phrase—it's your key to wallet recovery.",
+    "confirmButton": "I wrote down"
+  },
+  "registerWithEmailAndPassword": {
+    "title": "Create & Secure",
+    "subtitle": "Only you access your encrypted wallet — we don't store your phrase or password.",
+    "email": "Account",
+    "password": "Password",
+    "getStarted": "Get Started!",
+    "inputs": {
+      "account": {
+        "label": "Account",
+        "placeholder": "Enter email or Phone"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter password"
+      }
+    },
+    "validation": {
+      "accountRequired": "Account is required",
+      "accountValid": "Should be phone or email",
+      "passwordRequired": "Password is required",
+      "passwordValid": "Password should be at least 8 characters, 1 number, 1 uppercase"
+    }
+  },
+  "pin": {
+    "createPin": "Create PIN",
+    "enterPin": "Enter PIN"
+  }
+}
