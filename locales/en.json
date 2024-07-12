@@ -1,6 +1,6 @@
 {
   "login": {
-    "title": "Welcome back!123",
+    "title": "Welcome back",
     "subtitle": "Login or import your wallet",
     "importWallet": "Import wallet",
     "standardLogin": "Email or Phone",
@@ -8,12 +8,12 @@
       "title": "Don't have an wallet",
       "button": "Create new"
     },
-    "orSigninWith": {
+    "orSignInWith": {
       "title": "Or sign in with"
     }
   },
   "register": {
-    "title": "Sign up \n or create new wallet",
+    "title": "Sign up \nor create new wallet",
     "createSeed": "Create Wallet",
     "standardRegister": "Create & Secure Wallet",
     "orSignupWith": {

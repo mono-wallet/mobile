@@ -4,7 +4,7 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Slot, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
 import "react-native-reanimated";
@@ -13,14 +13,17 @@ import { I18nextProvider } from "react-i18next";
 import ReactQuery from "@/context/ReactQuery";
 import KeyboardAvoiding from "@/context/KeyboardAvoiding";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { TamaguiProvider, Theme } from "tamagui";
-import { config } from "@/tamagui.config";
+import { View, Text } from "react-native";
 import { LogBox } from "react-native";
 import i18n from "@/i18n";
 
-LogBox.ignoreLogs([/^Cannot update a component/]);
+LogBox.ignoreLogs([/^Cannot update a component*/]);
 
 SplashScreen.preventAutoHideAsync();
+
+export const unstable_settings = {
+  initialRouteName: "login/",
+};
 
 const RootLayout = () => {
   const colorScheme = useColorScheme();
@@ -35,25 +38,24 @@ const RootLayout = () => {
   }, [loaded]);
 
   if (!loaded) {
-    return null;
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
   }
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <TamaguiProvider config={config} defaultTheme={colorScheme!}>
-        <I18nextProvider i18n={i18n}>
-          <ReactQuery>
-            <SafeAreaProvider>
-              <KeyboardAvoiding>
-                <Stack screenOptions={{ headerShown: false }}>
-                  <Stack.Screen name="(auth)" />
-                  <Stack.Screen name="+not-found" />
-                </Stack>
-              </KeyboardAvoiding>
-            </SafeAreaProvider>
-          </ReactQuery>
-        </I18nextProvider>
-      </TamaguiProvider>
+      <I18nextProvider i18n={i18n}>
+        <ReactQuery>
+          <SafeAreaProvider>
+            <KeyboardAvoiding>
+              <Slot />
+            </KeyboardAvoiding>
+          </SafeAreaProvider>
+        </ReactQuery>
+      </I18nextProvider>
     </ThemeProvider>
   );
 };

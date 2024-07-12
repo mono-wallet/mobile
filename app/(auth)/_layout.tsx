@@ -1,18 +1,12 @@
-import { Tabs } from "expo-router";
+import { Stack } from "expo-router";
 
 const AuthLayout = () => {
   return (
-    <Tabs
+    <Stack
       screenOptions={{
         headerShown: false,
-        tabBarStyle: {
-          display: "none",
-        },
       }}
-    >
-      <Tabs.Screen name="index" />
-      <Tabs.Screen name="register" />
-    </Tabs>
+    />
   );
 };
 
