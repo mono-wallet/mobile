@@ -1,11 +1,62 @@
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTranslation } from "react-i18next";
+import { View } from "react-native";
+import { H2, Lead } from "@/components/Typography";
+import { Button } from "@/components/Button";
+import { Text } from "@/components/Text";
+import { Link } from "expo-router";
 
 const LoginScreen = () => {
   const { t } = useTranslation("login");
+  const { t: tGlobal } = useTranslation();
 
-  return <SafeAreaView style={{ flex: 1 }}></SafeAreaView>;
+  return (
+    <SafeAreaView>
+      <View className="flex flex-col justify-between h-full px-4">
+        <View className="flex flex-col">
+          <H2>{t("title")}</H2>
+          <Lead className="">{t("subtitle")}</Lead>
+        </View>
+
+        <View className="flex flex-col gap-4">
+          <Button>
+            <Text>{t("importWallet")}</Text>
+          </Button>
+
+          <Button>
+            <Text>{t("standardLogin")}</Text>
+          </Button>
+        </View>
+
+        <View className="flex flex-col gap-4 items-center">
+          <Lead>{t("orSignInWith.title")}</Lead>
+
+          <View className="flex flex-row">
+            <Button variant="secondary" className="w-1/2 mr-2">
+              <View className="flex flex-row">
+                <Text>{tGlobal("apple:title")}</Text>
+              </View>
+            </Button>
+
+            <Button variant="secondary" className="w-1/2 ml-2">
+              <Text>{tGlobal("google:title")}</Text>
+            </Button>
+          </View>
+
+          <View className="flex flex-row items-center">
+            <Lead>{t("dontHaveAccount.title")}</Lead>
+
+            <Link asChild href="/signup">
+              <Button variant="link">
+                <Text>{t("dontHaveAccount.button")}</Text>
+              </Button>
+            </Link>
+          </View>
+        </View>
+      </View>
+    </SafeAreaView>
+  );
 };
 
 export default LoginScreen;
