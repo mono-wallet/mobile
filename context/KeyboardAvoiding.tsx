@@ -4,14 +4,13 @@ import {
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
-  StyleSheet,
 } from "react-native";
 
 const KeyboardAvoiding: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
+      className="flex-1"
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         {children}
@@ -19,11 +18,5 @@ const KeyboardAvoiding: React.FC<PropsWithChildren<{}>> = ({ children }) => {
     </KeyboardAvoidingView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default KeyboardAvoiding;
