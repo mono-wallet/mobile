@@ -1,9 +1,4 @@
 import "../global.css";
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -14,8 +9,8 @@ import ReactQuery from "@/context/ReactQuery";
 import KeyboardAvoiding from "@/context/KeyboardAvoiding";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useColorScheme as NWUseColorScheme } from "nativewind";
-import { useColorScheme } from "react-native";
 import i18n from "@/i18n";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -25,7 +20,6 @@ export const unstable_settings = {
 
 const RootLayout = () => {
   const { setColorScheme } = NWUseColorScheme();
-  const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
@@ -35,7 +29,7 @@ const RootLayout = () => {
       SplashScreen.hideAsync();
     }
 
-    setColorScheme(colorScheme ?? "dark");
+    setColorScheme("dark");
   }, [loaded]);
 
   if (!loaded) {
@@ -43,7 +37,7 @@ const RootLayout = () => {
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+    <ThemeProvider>
       <I18nextProvider i18n={i18n}>
         <ReactQuery>
           <SafeAreaProvider>

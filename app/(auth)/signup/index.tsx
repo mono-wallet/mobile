@@ -14,7 +14,7 @@ const SignUpScreen = () => {
   return (
     <SafeAreaView>
       <View className="flex flex-col justify-between h-full px-4">
-        <H2>{t("title")}</H2>
+        <H2 className="border-0">{t("title")}</H2>
 
         <View className="flex flex-col gap-4">
           <Button>
