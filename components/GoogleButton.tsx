@@ -4,16 +4,18 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { ClassName } from "@/types/class-name";
 
-const GoogleButton = () => {
+const GoogleButton = ({ className }: Partial<ClassName>) => {
   const { t } = useTranslation("google");
 
   return (
-    <Button variant="secondary" className="w-1/2 ml-2">
-      <View className="flex flex-row">
+    <Button variant="secondary" className={className}>
+      <View className="flex flex-row gap-2">
         <Text>
-          <FontAwesome name="google" size={24} />
+          <FontAwesome name="google" size={20} />
         </Text>
+
         <Text>{t("title")}</Text>
       </View>
     </Button>

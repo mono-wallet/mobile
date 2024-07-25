@@ -11,9 +11,9 @@ const AppleButton = ({ className }: Partial<ClassName>) => {
 
   return (
     <Button variant="secondary" className={className}>
-      <View className="flex flex-row">
+      <View className="flex flex-row items-center gap-2">
         <Text>
-          <FontAwesome name="apple" size={24} />
+          <FontAwesome name="apple" size={20} />
         </Text>
 
         <Text>{t("title")}</Text>
