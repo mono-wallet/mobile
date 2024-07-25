@@ -6,7 +6,7 @@ import {
   ThemeProvider as RNThemeProvider,
 } from "@react-navigation/native";
 import { useColorScheme as RNUseColorScheme } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { storage } from "@/lib/mmkv";
 
 DefaultTheme.colors.background = "white";
 DarkTheme.colors.background = "#09090b";
@@ -18,35 +18,31 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     if (loaded) {
-      (async () => {
-        const theme = await AsyncStorage.getItem("theme");
+      const theme = storage.getString("theme");
 
-        if (!theme) {
-          const cs = rnColorScheme === "dark" ? "dark" : "light";
+      if (!theme) {
+        const cs = rnColorScheme === "dark" ? "dark" : "light";
 
-          await AsyncStorage.setItem("theme", cs);
-          setColorScheme(cs);
-          return;
-        }
+        storage.set("theme", cs);
+        setColorScheme(cs);
+        return;
+      }
 
-        if (colorScheme && theme !== colorScheme) {
-          await AsyncStorage.setItem("theme", colorScheme);
-          return;
-        }
-      })();
+      if (colorScheme && theme !== colorScheme) {
+        storage.set("theme", colorScheme);
+        return;
+      }
     }
   }, [colorScheme, loaded]);
 
   useEffect(() => {
-    (async () => {
-      const theme = await AsyncStorage.getItem("theme");
+    const theme = storage.getString("theme");
 
-      if (theme) {
-        setColorScheme(theme as "light" | "dark");
-      }
+    if (theme) {
+      setColorScheme(theme as "light" | "dark");
+    }
 
-      setLoaded(true);
-    })();
+    setLoaded(true);
   }, []);
 
   const isDarkMode = useMemo(
