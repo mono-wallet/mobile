@@ -7,6 +7,7 @@ import { Button } from "@/components/Button";
 import { Text } from "@/components/Text";
 import { Link } from "expo-router";
 import AppleButton from "@/components/AppleButton";
+import GoogleButton from "@/components/GoogleButton";
 
 const LoginScreen = () => {
   const { t } = useTranslation("login");
@@ -34,6 +35,8 @@ const LoginScreen = () => {
 
           <View className="flex flex-row">
             <AppleButton className="w-1/2 mr-2" />
+
+            <GoogleButton className="w-1/2 ml-2" />
           </View>
 
           <View className="flex flex-row items-center">

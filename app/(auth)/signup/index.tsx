@@ -6,10 +6,11 @@ import { Text } from "@/components/Text";
 import { View } from "react-native";
 import { H2, Lead } from "@/components/Typography";
 import { Link } from "expo-router";
+import AppleButton from "@/components/AppleButton";
+import GoogleButton from "@/components/GoogleButton";
 
 const SignUpScreen = () => {
   const { t } = useTranslation("register");
-  const { t: tGlobal } = useTranslation();
 
   return (
     <SafeAreaView>
@@ -21,24 +22,20 @@ const SignUpScreen = () => {
             <Text>{t("createSeed")}</Text>
           </Button>
 
-          <Button>
-            <Text>{t("standardRegister")}</Text>
-          </Button>
+          <Link asChild href="/signup/credentials">
+            <Button>
+              <Text>{t("standardRegister")}</Text>
+            </Button>
+          </Link>
         </View>
 
         <View className="flex flex-col gap-4 items-center">
           <Lead>{t("orSignupWith.title")}</Lead>
 
           <View className="flex flex-row">
-            <Button variant="secondary" className="w-1/2 mr-2">
-              <View className="flex flex-row">
-                <Text>{tGlobal("apple:title")}</Text>
-              </View>
-            </Button>
+            <AppleButton className="w-1/2 mr-2" />
 
-            <Button variant="secondary" className="w-1/2 ml-2">
-              <Text>{tGlobal("google:title")}</Text>
-            </Button>
+            <GoogleButton className="w-1/2 ml-2" />
           </View>
 
           <View className="flex flex-row items-center">

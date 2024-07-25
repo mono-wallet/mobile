@@ -37,7 +37,7 @@
   },
   "registerWithEmailAndPassword": {
     "title": "Create & Secure",
-    "subtitle": "Only you access your encrypted wallet — we don't store your phrase or password.",
+    "subtitle": "Only you access your encrypted wallet -\nwe don't store your phrase or password.",
     "email": "Account",
     "password": "Password",
     "getStarted": "Get Started!",
