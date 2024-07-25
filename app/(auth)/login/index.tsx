@@ -6,10 +6,10 @@ import { H2, Lead } from "@/components/Typography";
 import { Button } from "@/components/Button";
 import { Text } from "@/components/Text";
 import { Link } from "expo-router";
+import AppleButton from "@/components/AppleButton";
 
 const LoginScreen = () => {
   const { t } = useTranslation("login");
-  const { t: tGlobal } = useTranslation();
 
   return (
     <SafeAreaView>
@@ -33,15 +33,7 @@ const LoginScreen = () => {
           <Lead>{t("orSignInWith.title")}</Lead>
 
           <View className="flex flex-row">
-            <Button variant="secondary" className="w-1/2 mr-2">
-              <View className="flex flex-row">
-                <Text>{tGlobal("apple:title")}</Text>
-              </View>
-            </Button>
-
-            <Button variant="secondary" className="w-1/2 ml-2">
-              <Text>{tGlobal("google:title")}</Text>
-            </Button>
+            <AppleButton className="w-1/2 mr-2" />
           </View>
 
           <View className="flex flex-row items-center">
