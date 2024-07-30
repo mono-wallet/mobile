@@ -17,7 +17,7 @@ const LoginScreen = () => {
       <View className="flex flex-col justify-between h-full px-4">
         <View className="flex flex-col">
           <H2 className="border-0">{t("title")}</H2>
-          <Lead className="">{t("subtitle")}</Lead>
+          <Lead>{t("subtitle")}</Lead>
         </View>
 
         <View className="flex flex-col gap-4">
