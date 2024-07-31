@@ -1,8 +1,8 @@
 import "../global.css";
 import { useFonts } from "expo-font";
-import { Slot } from "expo-router";
+import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import "react-native-reanimated";
 import { I18nextProvider } from "react-i18next";
 import ReactQuery from "@/context/ReactQuery";
@@ -15,7 +15,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 SplashScreen.preventAutoHideAsync();
 
 export const unstable_settings = {
-  initialRouteName: "login",
+  initialRouteName: "(auth)/login",
 };
 
 const RootLayout = () => {
@@ -42,7 +42,11 @@ const RootLayout = () => {
         <ReactQuery>
           <SafeAreaProvider>
             <KeyboardAvoiding>
-              <Slot />
+              <Stack
+                screenOptions={{
+                  headerShown: false,
+                }}
+              />
             </KeyboardAvoiding>
           </SafeAreaProvider>
         </ReactQuery>

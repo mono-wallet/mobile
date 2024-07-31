@@ -31,11 +31,32 @@
     "title": "Google"
   },
   "generateSeedPhrase": {
+    "modal": {
+      "title": "Recovery Phrase",
+      "subtitle": "Read the following, then save the phrase securely.",
+      "confirmButton": "Show Recovery Phrase",
+      "steps": {
+        "0": "Your recovery phrase provides full access to your wallets and funds.",
+        "1": "In case you forget your password, the recovery phrase allows you to regain access to your wallet.",
+        "2": "Keep your recovery phrase private and never share it with anyone."
+      }
+    },
     "title": "Your wallet has been created",
     "subtitle": "Securely note your seed phrase—it's your key to wallet recovery.",
     "confirmButton": "I wrote down"
   },
   "registerWithEmailAndPassword": {
+    "modal": {
+      "title": "Secure Your Wallet",
+      "subtitle": "Read the following, then save the phrase securely.",
+      "confirmButton": "Proceed",
+      "steps": {
+        "0": "Your mnemonic phrase will be hashed and sent to the server.",
+        "1": "Hashing and dehashing happen on the client side, so we do not store your password or the mnemonic phrase itself.",
+        "2": "Only you will have access to your mnemonic phrase by knowing your chosen password.",
+        "3": "This process is designed for your convenience and does not compromise security."
+      }
+    },
     "title": "Create & Secure",
     "subtitle": "Only you access your encrypted wallet -\nwe don't store your phrase or password.",
     "email": "Account",

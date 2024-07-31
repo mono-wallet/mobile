@@ -1,6 +1,5 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTranslation } from "react-i18next";
-import React from "react";
 import { Button } from "@/components/Button";
 import { Text } from "@/components/Text";
 import { View } from "react-native";
@@ -18,13 +17,13 @@ const SignUpScreen = () => {
         <H2 className="border-0">{t("title")}</H2>
 
         <View className="flex flex-col gap-4">
-          <Link asChild href="/signup/seed-phrase">
+          <Link asChild href="/signup/(modals)/seed-phrase">
             <Button>
               <Text>{t("createSeed")}</Text>
             </Button>
           </Link>
 
-          <Link asChild href="/signup/credentials">
+          <Link asChild href="/signup/(modals)/credentials">
             <Button>
               <Text>{t("standardRegister")}</Text>
             </Button>
