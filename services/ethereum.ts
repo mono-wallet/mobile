@@ -1,8 +1,9 @@
 import "@ethersproject/shims";
-import { CryptoService } from "@/types/crypto-service";
 import { HDNodeWallet } from "ethers";
+import { CryptoService } from "@/types/crypto-service";
+import { CreateWallet } from "@/types/create-wallet";
 
-class Ethereum implements CryptoService {
+class Ethereum implements CryptoService, CreateWallet {
   createWallet(): HDNodeWallet {
     return HDNodeWallet.createRandom();
   }
@@ -10,9 +11,11 @@ class Ethereum implements CryptoService {
   restoreWalletFromPhrase(): Promise<string> {
     throw new Error("Method not implemented.");
   }
+
   sendTransaction(): Promise<string> {
     throw new Error("Method not implemented.");
   }
+
   calculateGasAndAmounts(): Promise<string> {
     throw new Error("Method not implemented.");
   }
