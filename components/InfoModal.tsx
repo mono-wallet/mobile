@@ -57,8 +57,8 @@ const InfoModal = ({ title, subtitle, steps, button }: InfoModalProps) => {
 
 const Step = ({ description, icon }: InfoModalStep) => {
   return (
-    <View className="flex flex-row items-center gap-4 pr-5">
-      <Text>{icon}</Text>
+    <View className="flex flex-row items-center gap-4 pr-12">
+      {icon}
       <P>{description}</P>
     </View>
   );

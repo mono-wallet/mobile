@@ -42,7 +42,7 @@
       }
     },
     "title": "Your wallet has been created",
-    "subtitle": "Securely note your seed phrase—it's your key to wallet recovery.",
+    "subtitle": "Securely note your seed phrase \nit's your key to wallet recovery.",
     "confirmButton": "I wrote down"
   },
   "registerWithEmailAndPassword": {
@@ -53,8 +53,7 @@
       "steps": {
         "0": "Your mnemonic phrase will be hashed and sent to the server.",
         "1": "Hashing and dehashing happen on the client side, so we do not store your password or the mnemonic phrase itself.",
-        "2": "Only you will have access to your mnemonic phrase by knowing your chosen password.",
-        "3": "This process is designed for your convenience and does not compromise security."
+        "2": "Only you will have access to your mnemonic phrase by knowing your chosen password."
       }
     },
     "title": "Create & Secure",

@@ -1,9 +1,15 @@
 import InfoModal from "@/components/InfoModal";
 import { useTranslation } from "react-i18next";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import StatusIcon from "@/components/StatusIcon";
+import { router } from "expo-router";
 
 const Credentials = () => {
   const { t } = useTranslation("registerWithEmailAndPassword");
+
+  const redirectToForm = () => {
+    router.replace("../credentials");
+  };
 
   return (
     <InfoModal
@@ -12,22 +18,30 @@ const Credentials = () => {
       steps={[
         {
           description: t("modal.steps.0"),
-          icon: <FontAwesome6 name="server" size={20} />,
+          icon: (
+            <StatusIcon>
+              <FontAwesome6 name="server" />
+            </StatusIcon>
+          ),
         },
         {
           description: t("modal.steps.1"),
-          icon: <FontAwesome6 name="hashtag" size={20} />,
+          icon: (
+            <StatusIcon variant="warning">
+              <FontAwesome6 name="hashtag" />
+            </StatusIcon>
+          ),
         },
         {
           description: t("modal.steps.2"),
-          icon: <FontAwesome6 name="person" size={20} />,
-        },
-        {
-          description: t("modal.steps.3"),
-          icon: <FontAwesome6 name="fingerprint" size={20} />,
+          icon: (
+            <StatusIcon variant="warning">
+              <FontAwesome6 name="person" />
+            </StatusIcon>
+          ),
         },
       ]}
-      button={{ title: t("modal.confirmButton"), onPress: () => {} }}
+      button={{ title: t("modal.confirmButton"), onPress: redirectToForm }}
     />
   );
 };
