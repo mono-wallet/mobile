@@ -5,12 +5,12 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 import { I18nextProvider } from "react-i18next";
-import ReactQuery from "@/context/ReactQuery";
-import KeyboardAvoiding from "@/context/KeyboardAvoiding";
+import ReactQuery from "@/providers/ReactQuery";
+import KeyboardAvoiding from "@/providers/KeyboardAvoiding";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useColorScheme as NWUseColorScheme } from "nativewind";
 import i18n from "@/i18n";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -21,7 +21,7 @@ export const unstable_settings = {
 const RootLayout = () => {
   const { setColorScheme } = NWUseColorScheme();
   const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    Geist: require("../assets/fonts/Geist-Regular.ttf"),
   });
 
   useEffect(() => {

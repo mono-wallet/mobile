@@ -6,10 +6,10 @@ import {
   ThemeProvider as RNThemeProvider,
 } from "@react-navigation/native";
 import { useColorScheme as RNUseColorScheme } from "react-native";
-import { storage } from "@/lib/mmkv";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 DefaultTheme.colors.background = "white";
-DarkTheme.colors.background = "#09090b";
+DarkTheme.colors.background = "#09090B";
 
 export const ThemeProvider = ({ children }: PropsWithChildren) => {
   const [loaded, setLoaded] = useState(false);
@@ -18,36 +18,40 @@ export const ThemeProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     if (loaded) {
-      const theme = storage.getString("theme");
+      (async () => {
+        const theme = await AsyncStorage.getItem("theme");
 
-      if (!theme) {
-        const cs = rnColorScheme === "dark" ? "dark" : "light";
+        if (!theme) {
+          const cs = rnColorScheme === "dark" ? "dark" : "light";
 
-        storage.set("theme", cs);
-        setColorScheme(cs);
-        return;
-      }
+          await AsyncStorage.setItem("theme", cs);
+          setColorScheme(cs);
+          return;
+        }
 
-      if (colorScheme && theme !== colorScheme) {
-        storage.set("theme", colorScheme);
-        return;
-      }
+        if (colorScheme && theme !== colorScheme) {
+          await AsyncStorage.setItem("theme", colorScheme);
+          return;
+        }
+      })();
     }
   }, [colorScheme, loaded]);
 
   useEffect(() => {
-    const theme = storage.getString("theme");
+    (async () => {
+      const theme = await AsyncStorage.getItem("theme");
 
-    if (theme) {
-      setColorScheme(theme as "light" | "dark");
-    }
+      if (theme) {
+        setColorScheme(theme as "light" | "dark");
+      }
 
-    setLoaded(true);
+      setLoaded(true);
+    })();
   }, []);
 
   const isDarkMode = useMemo(
     () => (!loaded && rnColorScheme === "dark") || colorScheme === "dark",
-    [loaded, rnColorScheme, colorScheme],
+    [loaded, rnColorScheme, colorScheme]
   );
 
   return (
