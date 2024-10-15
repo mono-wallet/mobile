@@ -1,7 +1,7 @@
-import { Text } from "@/components/Text";
+import { Redirect } from "expo-router";
 
 const Index = () => {
-  return <Text className="text-red-500">Hello</Text>;
+  return <Redirect href="/(auth)/login" />;
 };
 
 export default Index;
