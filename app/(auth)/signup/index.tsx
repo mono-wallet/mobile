@@ -17,13 +17,13 @@ const SignUpScreen = () => {
         <H2 className="border-0">{t("title")}</H2>
 
         <View className="flex flex-col gap-4">
-          <Link asChild href="/signup/(modals)/seed-phrase">
+          <Link asChild href="/signup/modals/seed-phrase">
             <Button>
               <Text>{t("createSeed")}</Text>
             </Button>
           </Link>
 
-          <Link asChild href="/signup/(modals)/credentials">
+          <Link asChild href="/signup/modals/credentials">
             <Button>
               <Text>{t("standardRegister")}</Text>
             </Button>

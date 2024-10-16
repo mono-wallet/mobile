@@ -1,18 +1,14 @@
 import InfoModal from "@/components/InfoModal";
-import StatusIcon from "@/components/StatusIcon";
-import {
-  FontAwesome5,
-  FontAwesome6,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
-import { router } from "expo-router";
 import { useTranslation } from "react-i18next";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import StatusIcon from "@/components/StatusIcon";
+import { router } from "expo-router";
 
-const SeedPhrase = () => {
-  const { t } = useTranslation("generateSeedPhrase");
+const CredentialsModal = () => {
+  const { t } = useTranslation("registerWithEmailAndPassword");
 
-  const redirectToSeedPhrase = () => {
-    router.replace("../seed-phrase");
+  const redirectToForm = () => {
+    router.replace("../credentials");
   };
 
   return (
@@ -24,7 +20,7 @@ const SeedPhrase = () => {
           description: t("modal.steps.0"),
           icon: (
             <StatusIcon>
-              <FontAwesome6 name="lock" />
+              <FontAwesome6 name="server" />
             </StatusIcon>
           ),
         },
@@ -32,25 +28,22 @@ const SeedPhrase = () => {
           description: t("modal.steps.1"),
           icon: (
             <StatusIcon variant="warning">
-              <MaterialCommunityIcons name="note-edit-outline" />
+              <FontAwesome6 name="hashtag" />
             </StatusIcon>
           ),
         },
         {
           description: t("modal.steps.2"),
           icon: (
-            <StatusIcon variant="error">
-              <FontAwesome5 name="eye-slash" />
+            <StatusIcon variant="warning">
+              <FontAwesome6 name="person" />
             </StatusIcon>
           ),
         },
       ]}
-      button={{
-        title: t("modal.confirmButton"),
-        onPress: redirectToSeedPhrase,
-      }}
+      button={{ title: t("modal.confirmButton"), onPress: redirectToForm }}
     />
   );
 };
 
-export default SeedPhrase;
+export default CredentialsModal;

@@ -8,7 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Text } from "@/components/Text";
 import { Badge } from "@/components/Badge";
 
-const Show = () => {
+const SeedPhraseScreen = () => {
   const { t } = useTranslation("generateSeedPhrase");
   const [mnemonic] = useState<string[]>(() => {
     return ethereum.createWallet().mnemonic?.phrase.split(" ") ?? [];
@@ -41,4 +41,4 @@ const Show = () => {
   );
 };
 
-export default Show;
+export default SeedPhraseScreen;

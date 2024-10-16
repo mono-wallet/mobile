@@ -11,13 +11,13 @@ const SignUpLayout = () => {
       <Stack.Screen name="credentials" />
       <Stack.Screen name="seed-phrase" />
       <Stack.Screen
-        name="(modals)/seed-phrase"
+        name="modals/seed-phrase"
         options={{
           presentation: "modal",
         }}
       />
       <Stack.Screen
-        name="(modals)/credentials"
+        name="modals/credentials"
         options={{
           presentation: "modal",
         }}
