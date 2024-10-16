@@ -1,9 +1,7 @@
-import { Link, router } from "expo-router";
 import { ReactNode } from "react";
 import { H2, Lead, P } from "./Typography";
 import { Button } from "./Button";
 import { Text } from "./Text";
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import { View } from "react-native";
 
 type InfoModalProps = {
@@ -24,33 +22,31 @@ type InfoModalButton = {
 };
 
 const InfoModal = ({ title, subtitle, steps, button }: InfoModalProps) => {
-  const isPresented = router.canGoBack();
-
   return (
-    <View className="flex flex-col h-full p-5 pb-10 justify-between">
-      <View className="flex flex-col gap-5">
-        {isPresented && (
-          <Link href="../">
-            <Text>
-              <FontAwesome6 name="arrow-left" size={24} />
-            </Text>
-          </Link>
-        )}
-        <View className="flex flex-col">
-          <H2 className="border-0">{title}</H2>
-          {subtitle && <Lead className="">{subtitle}</Lead>}
+    <View className="flex flex-col gap-2 pb-20">
+      <View className="w-full flex items-center pt-2">
+        <View className="w-16 h-1 bg-primary rounded-full" />
+      </View>
+      
+      <View className="flex flex-col h-full justify-between p-5">
+        <View className="flex flex-col gap-5">
+
+          <View className="flex flex-col">
+            <H2 className="border-0">{title}</H2>
+            {subtitle && <Lead className="">{subtitle}</Lead>}
+          </View>
         </View>
-      </View>
 
-      <View className="flex flex-col gap-5">
-        {steps.map((step) => (
-          <Step key={step.description} {...step} />
-        ))}
-      </View>
+        <View className="flex flex-col gap-5">
+          {steps.map((step) => (
+            <Step key={step.description} {...step} />
+          ))}
+        </View>
 
-      <Button onPress={button.onPress}>
-        <Text>{button.title}</Text>
-      </Button>
+        <Button onPress={button.onPress}>
+          <Text>{button.title}</Text>
+        </Button>
+      </View>
     </View>
   );
 };
