@@ -42,7 +42,7 @@ const SignUpScreen = () => {
           <View className="flex flex-row items-center">
             <Lead>{t("haveAccount.title")}</Lead>
 
-            <Link asChild href="/login">
+            <Link href="/login" replace asChild>
               <Button variant="link">
                 <Text>{t("haveAccount.button")}</Text>
               </Button>

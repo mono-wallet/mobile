@@ -11,6 +11,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { useColorScheme as NWUseColorScheme } from "nativewind";
 import i18n from "@/i18n";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import { Appearance } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -19,7 +20,7 @@ export const unstable_settings = {
 };
 
 const RootLayout = () => {
-  const { setColorScheme } = NWUseColorScheme();
+  const { setColorScheme, colorScheme } = NWUseColorScheme();
   const [loaded] = useFonts({
     Geist: require("../assets/fonts/Geist-Regular.ttf"),
   });
@@ -28,8 +29,9 @@ const RootLayout = () => {
     if (loaded) {
       SplashScreen.hideAsync();
     }
-
+    
     setColorScheme("dark");
+    Appearance.setColorScheme('dark');;
   }, [loaded]);
 
   if (!loaded) {

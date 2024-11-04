@@ -1,4 +1,3 @@
-import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTranslation } from "react-i18next";
 import { View } from "react-native";
@@ -42,7 +41,7 @@ const LoginScreen = () => {
           <View className="flex flex-row items-center">
             <Lead>{t("dontHaveAccount.title")}</Lead>
 
-            <Link asChild href="/signup">
+            <Link  href="/signup" replace asChild>
               <Button variant="link">
                 <Text>{t("dontHaveAccount.button")}</Text>
               </Button>

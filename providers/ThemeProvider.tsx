@@ -3,7 +3,7 @@ import { useColorScheme } from "nativewind";
 import {
   DarkTheme,
   DefaultTheme,
-  ThemeProvider as RNThemeProvider,
+  NavigationContainer as RNThemeProvider,
 } from "@react-navigation/native";
 import { useColorScheme as RNUseColorScheme } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
